@@ -30,7 +30,7 @@ def main():
             x_centroid, y_centroid = [], []
             image_id = image_data['id']
             image_file_name = image_data['file_name']
-
+            print(f"Processing image {image_file_name}...")
             # Récupération des annotations pour cette image
             image_annotations = [
                 annotation for annotation in data['annotations'] if annotation['image_id'] == image_id]
@@ -75,7 +75,9 @@ def main():
 
             cluster_sizes = [np.sum(labels == k) for k in unique_labels]
 
+            
             # Plot histogram of cluster sizes
+            plt.figure()
             plt.hist(cluster_sizes, bins='auto')
             plt.xlabel('Cluster Size')
             plt.ylabel('Frequency')
